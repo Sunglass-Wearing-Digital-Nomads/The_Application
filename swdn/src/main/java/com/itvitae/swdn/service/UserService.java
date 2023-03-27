@@ -15,9 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.cert.Certificate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -186,13 +184,13 @@ public class UserService {
 
     public void reactivateAccount(String email) {
 
-        System.out.println(email);
-        Optional<User> schrodingersUser = userRepository.findByEmail("[Deleted] " + email);
-        System.out.println(schrodingersUser);
+        List<User> schrodingersUsers = userRepository.findAllByEmail("[Deleted] " + email);
 
-        if (schrodingersUser.isPresent() && schrodingersUser.get().isDeleted()) {
+        User schrodingersUser = Collections.max(schrodingersUsers, Comparator.comparing(c -> c.getId()));;
 
-            User reanimatedUser = schrodingersUser.get();
+        if (schrodingersUser.isDeleted()) {
+
+            User reanimatedUser = schrodingersUser;
             Person reanimatedPerson = reanimatedUser.getPerson();
 
             //Luke 24:6-7
