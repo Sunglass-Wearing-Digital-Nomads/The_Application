@@ -27,7 +27,7 @@ export default function NewPerson(props) {
             setCity('');
             setRole(1);
 
-            fetch(`http://localhost:8082/api/user/new/${role}`, {
+            fetch(`${props.url}/api/user/new/${role}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

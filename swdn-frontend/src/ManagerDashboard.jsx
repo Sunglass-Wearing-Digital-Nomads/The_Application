@@ -16,7 +16,7 @@ export default function ManagerDashboard(props) {
 
     const fetchViewer = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/person/${props.person.id}`,
+            `${props.url}/api/person/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -33,7 +33,7 @@ export default function ManagerDashboard(props) {
 
     const fetchData = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/person/getsubordinates/${props.person.id}`,
+            `${props.url}/api/person/getsubordinates/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -49,15 +49,12 @@ export default function ManagerDashboard(props) {
     };
 
     const fetchSkills = async () => {
-        const result = await fetch(
-            `http://localhost:8082/api/skill/${person}/all`,
-            {
-                headers: {
-                    Authorization:
-                        'Basic ' + btoa(props.email + ':' + props.password),
-                },
-            }
-        );
+        const result = await fetch(`${props.url}/api/skill/${person}/all`, {
+            headers: {
+                Authorization:
+                    'Basic ' + btoa(props.email + ':' + props.password),
+            },
+        });
         if (!result.ok) {
             throw new Error('Data coud not be fetched!');
         } else {
@@ -67,7 +64,7 @@ export default function ManagerDashboard(props) {
 
     const fetchTraineeMeetings = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/evaluation/trainee/${person}/future`,
+            `${props.url}/api/evaluation/trainee/${person}/future`,
             {
                 headers: {
                     Authorization:
@@ -84,7 +81,7 @@ export default function ManagerDashboard(props) {
 
     const fetchViewerMeetings = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/evaluation/evaluator/${viewer.id}/future`,
+            `${props.url}/api/evaluation/evaluator/${viewer.id}/future`,
             {
                 headers: {
                     Authorization:
@@ -185,6 +182,7 @@ export default function ManagerDashboard(props) {
                 editable={false}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
             <div className="sidebar">
                 <div className="importantImage bordered">
@@ -216,6 +214,7 @@ export default function ManagerDashboard(props) {
                     }}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                 />
                 <Meetings
                     meetings={viewerMeetings}

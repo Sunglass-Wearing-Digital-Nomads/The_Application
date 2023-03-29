@@ -9,12 +9,11 @@ import cat from './img/cat-long.avif';
 export default function TraineeDashboard(props) {
     const [skills, setSkills] = useState([]);
     const [skill, setSkill] = useState(-1);
-    const [viewerMeetings, setViewerMeetings] = useState([]);
     const [traineeMeetings, setTraineeMeetings] = useState([]);
 
     const fetchTraineeMeetings = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/evaluation/trainee/${props.person.id}/future`,
+            `${props.url}/api/evaluation/trainee/${props.person.id}/future`,
             {
                 headers: {
                     Authorization:
@@ -31,7 +30,7 @@ export default function TraineeDashboard(props) {
 
     const fetchSkills = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/skill/${props.person.id}/all`,
+            `${props.url}/api/skill/${props.person.id}/all`,
             {
                 headers: {
                     Authorization:
@@ -88,6 +87,7 @@ export default function TraineeDashboard(props) {
                 editable={true}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
             <div className="sidebar">
                 <NewSkill
@@ -103,6 +103,7 @@ export default function TraineeDashboard(props) {
                     }}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                     skills={skills}
                     templates={props.templates}
                     template={props.template}
@@ -112,6 +113,7 @@ export default function TraineeDashboard(props) {
                     person={props.person.id}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                 />
                 <Meetings
                     meetings={traineeMeetings}

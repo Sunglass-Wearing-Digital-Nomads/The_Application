@@ -19,7 +19,7 @@ export default function PasswordChanger(props) {
             oldPassword: checkPassword,
             newPassword: newPassword,
         };
-        fetch(`http://localhost:8082/api/user/changepassword`, {
+        fetch(`${props.url}/api/user/changepassword`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

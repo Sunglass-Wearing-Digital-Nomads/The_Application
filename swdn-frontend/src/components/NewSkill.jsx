@@ -16,7 +16,7 @@ function NewSkill(props) {
             });
             if (!name.replace(/\s/g, '').length) {
             } else {
-                fetch(`http://localhost:8082/api/skill/new/${props.person}`, {
+                fetch(`${props.url}/api/skill/new/${props.person}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function NewSkill(props) {
         } else {
             if (props.template > 0) {
                 fetch(
-                    `http://localhost:8082/api/template/assign/${props.template}/to/${props.person}`,
+                    `${props.url}/api/template/assign/${props.template}/to/${props.person}`,
                     {
                         method: 'PUT',
                         headers: {

@@ -13,7 +13,7 @@ export default function AccountPage(props) {
 
     const fetchData = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/person/${props.person.id}`,
+            `${props.url}/api/person/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -36,7 +36,7 @@ export default function AccountPage(props) {
             // email: email,
         });
         setName('');
-        fetch(`http://localhost:8082/api/changerequest/new/${person.id}`, {
+        fetch(`${props.url}/api/changerequest/new/${person.id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -134,6 +134,7 @@ export default function AccountPage(props) {
                                 setEmailChange={setEmailChange}
                                 email={props.email}
                                 password={props.password}
+                                url={props.url}
                                 setEmail={props.setEmail}
                             />
                         ) : (
@@ -146,6 +147,7 @@ export default function AccountPage(props) {
                                 setPasswordChange={setPasswordChange}
                                 email={props.email}
                                 password={props.password}
+                                url={props.url}
                                 setPassword={props.setPassword}
                             />
                         ) : (

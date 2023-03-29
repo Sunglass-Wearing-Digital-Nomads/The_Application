@@ -8,7 +8,7 @@ export default function CoachFeedbackPage(props) {
 
     const fetchFeedbackGiven = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/invitation/givers/${props.trainee}`,
+            `${props.url}/api/invitation/givers/${props.trainee}`,
             {
                 headers: {
                     Authorization:
@@ -65,6 +65,7 @@ export default function CoachFeedbackPage(props) {
                 editable={false}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
         </div>
     );

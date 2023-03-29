@@ -18,12 +18,14 @@ export default function TemplatesPage(props) {
                 update={props.update}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
             <div className="sidebar">
                 <NewTemplate
                     update={props.update}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                     skills={props.templates}
                 />
             </div>

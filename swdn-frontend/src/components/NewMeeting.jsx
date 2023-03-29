@@ -31,7 +31,7 @@ function NewMeeting(props) {
             setTime('');
             setDuration('');
             fetch(
-                `http://localhost:8082/api/evaluation/new/${props.evaluator}/${props.trainee}`,
+                `${props.url}/api/evaluation/new/${props.evaluator}/${props.trainee}`,
                 {
                     method: 'POST',
                     headers: {

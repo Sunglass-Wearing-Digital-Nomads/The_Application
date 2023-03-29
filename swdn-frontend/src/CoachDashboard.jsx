@@ -13,7 +13,7 @@ export default function CoachDashboard(props) {
 
     const fetchData = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/person/gettrainees/${props.person.id}`,
+            `${props.url}/api/person/gettrainees/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -30,7 +30,7 @@ export default function CoachDashboard(props) {
 
     const fetchSkills = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/skill/${props.trainee}/all`,
+            `${props.url}/api/skill/${props.trainee}/all`,
             {
                 headers: {
                     Authorization:
@@ -47,7 +47,7 @@ export default function CoachDashboard(props) {
 
     const fetchTraineeMeetings = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/evaluation/trainee/${props.trainee}/future`,
+            `${props.url}/api/evaluation/trainee/${props.trainee}/future`,
             {
                 headers: {
                     Authorization:
@@ -64,7 +64,7 @@ export default function CoachDashboard(props) {
 
     const fetchViewerMeetings = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/evaluation/evaluator/${props.person.id}/future`,
+            `${props.url}/api/evaluation/evaluator/${props.person.id}/future`,
             {
                 headers: {
                     Authorization:
@@ -155,6 +155,7 @@ export default function CoachDashboard(props) {
                 editable={true}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
             <div className="sidebar">
                 <NewSkill
@@ -170,6 +171,7 @@ export default function CoachDashboard(props) {
                     }}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                     skills={skills}
                     templates={props.templates}
                     template={props.template}
@@ -198,6 +200,7 @@ export default function CoachDashboard(props) {
                     }}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                 />
                 <Meetings
                     meetings={viewerMeetings}

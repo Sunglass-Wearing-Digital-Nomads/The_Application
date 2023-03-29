@@ -27,7 +27,7 @@ export default function TemplateData(props) {
                         )
                     ) {
                         fetch(
-                            `http://localhost:8082/api/template/delete/${props.skill.id}`,
+                            `${props.url}/api/template/delete/${props.skill.id}`,
                             {
                                 method: 'DELETE',
                                 headers: {

@@ -7,7 +7,7 @@ function List(props) {
             <h3>{props.title}</h3>
 
             <div className="list bordered">
-                {props.content.map((item, index) => (
+                {props.content.map((item) => (
                     <ListItem
                         name={item.name}
                         id={item.id}

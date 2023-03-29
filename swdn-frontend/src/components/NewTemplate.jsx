@@ -12,7 +12,7 @@ function NewTemplate(props) {
         const newTemplate = JSON.stringify({ name: name, hardSkill: hardness });
         if (!name.replace(/\s/g, '').length) {
         } else {
-            fetch(`http://localhost:8082/api/template/new`, {
+            fetch(`${props.url}/api/template/new`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

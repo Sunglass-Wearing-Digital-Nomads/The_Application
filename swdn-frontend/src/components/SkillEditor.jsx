@@ -29,24 +29,21 @@ export default function SkillEditor(props) {
             report: report,
             description: description,
         });
-        await fetch(
-            `http://localhost:8082/api/skill/update/${props.skill.id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization:
-                        'Basic ' + btoa(props.email + ':' + props.password),
-                },
-                body: newSkill,
-            }
-        );
+        await fetch(`${props.url}/api/skill/update/${props.skill.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization:
+                    'Basic ' + btoa(props.email + ':' + props.password),
+            },
+            body: newSkill,
+        });
 
         if (fileChanged) {
             let formData = new FormData();
             formData.append('file', certificate);
             await fetch(
-                `http://localhost:8082/api/skill/add/certificate/${props.skill.id}`,
+                `${props.url}/api/skill/add/certificate/${props.skill.id}`,
                 {
                     method: 'PUT',
                     headers: {

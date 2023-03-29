@@ -42,7 +42,8 @@ public class SecurityConfig {
                 .hasRole("HR")
 
                 .requestMatchers("/api/invitation/new/**",
-                        "/api/invitation/requesters/**")
+                        "/api/invitation/requesters/**",
+                        "/api/role/trainee/all")
                 .hasRole("TRAINEE")
 
                 .requestMatchers("/api/person/gettrainees/**",
@@ -71,7 +72,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/evaluation/get/**", "/api/evaluation/trainee/**")
                 .hasAnyRole("TRAINEE", "COACH", "MANAGER")
 
-                .requestMatchers("/api/user/login", "/swagger-ui/**", "/v3/api-docs/**")
+                .requestMatchers("/api/user/login", "/swagger-ui/**", "/v3/api-docs/**", "basruijs/The_Application.git")
                 .permitAll()
 
                 .requestMatchers("/**")

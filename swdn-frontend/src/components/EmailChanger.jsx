@@ -9,7 +9,7 @@ export default function EmailChanger(props) {
             password: props.password,
             newEmail: newEmail,
         };
-        fetch(`http://localhost:8082/api/user/changeemail`, {
+        fetch(`${props.url}/api/user/changeemail`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

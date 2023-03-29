@@ -7,18 +7,15 @@ export default function SkillEditor(props) {
         const newFeedback = JSON.stringify({
             feedback: feedback,
         });
-        fetch(
-            `http://localhost:8082/api/invitation/update/${props.feedback.id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization:
-                        'Basic ' + btoa(props.email + ':' + props.password),
-                },
-                body: newFeedback,
-            }
-        ).then(() => props.update());
+        fetch(`${props.url}/api/invitation/update/${props.feedback.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization:
+                    'Basic ' + btoa(props.email + ':' + props.password),
+            },
+            body: newFeedback,
+        }).then(() => props.update());
     }
     return (
         <div className="feedbackOverview bordered">

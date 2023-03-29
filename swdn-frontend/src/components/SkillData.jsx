@@ -34,7 +34,7 @@ export default function SkillData(props) {
                 <span className="icon">🗎</span>
                 {props.skill.certificate ? (
                     <a
-                        href={`http://localhost:8082/api/skill/certificate/${props.skill.id}`}
+                        href={`${props.url}/api/skill/certificate/${props.skill.id}`}
                         download={props.skill.certificate.fileName}
                     >
                         {props.skill.certificate.fileName}
@@ -55,7 +55,7 @@ export default function SkillData(props) {
                             )
                         ) {
                             fetch(
-                                `http://localhost:8082/api/skill/delete/${props.skill.id}`,
+                                `${props.url}/api/skill/delete/${props.skill.id}`,
                                 {
                                     method: 'DELETE',
                                     headers: {

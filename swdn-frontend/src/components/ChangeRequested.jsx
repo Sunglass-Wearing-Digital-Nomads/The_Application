@@ -12,15 +12,12 @@ export default function ChangeRequested(props) {
     }, [props.personid]);
 
     function getRequest() {
-        fetch(
-            `http://localhost:8082/api/changerequest/byperson/${props.personid}`,
-            {
-                headers: {
-                    Authorization:
-                        'Basic ' + btoa(props.email + ':' + props.password),
-                },
-            }
-        ).then((response) => {
+        fetch(`${props.url}/api/changerequest/byperson/${props.personid}`, {
+            headers: {
+                Authorization:
+                    'Basic ' + btoa(props.email + ':' + props.password),
+            },
+        }).then((response) => {
             if (response) {
                 response.json().then((data) => {
                     setRequest(data);
@@ -32,7 +29,7 @@ export default function ChangeRequested(props) {
     }
 
     function deleteRequest() {
-        fetch(`http://localhost:8082/api/changerequest/delete/${request.id}`, {
+        fetch(`${props.url}/api/changerequest/delete/${request.id}`, {
             method: 'DELETE',
             headers: {
                 Authorization:
@@ -45,7 +42,7 @@ export default function ChangeRequested(props) {
         let denyReason = prompt(
             'Please give the reason for denying the request.'
         );
-        fetch(`http://localhost:8082/api/changerequest/deny/${request.id}`, {
+        fetch(`${props.url}/api/changerequest/deny/${request.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'text/plain',

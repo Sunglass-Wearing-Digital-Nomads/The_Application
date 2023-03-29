@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import SkillData from './SkillData';
-import SkillEditor from './SkillEditor';
 import TemplateData from './TemplateData';
 import TemplateEditor from './TemplateEditor';
 function TemplateOverview(props) {
@@ -14,6 +12,7 @@ function TemplateOverview(props) {
                     setEdit={setEdit}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                     update={props.update}
                 />
             );
@@ -24,6 +23,7 @@ function TemplateOverview(props) {
                     setEdit={setEdit}
                     email={props.email}
                     password={props.password}
+                    url={props.url}
                     update={props.update}
                 />
             );

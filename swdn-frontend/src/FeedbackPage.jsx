@@ -11,7 +11,7 @@ export default function FeedbackPage(props) {
 
     const fetchFeedbackRequested = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/invitation/requesters/${props.person.id}`,
+            `${props.url}/api/invitation/requesters/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -28,7 +28,7 @@ export default function FeedbackPage(props) {
     };
     const fetchFeedbackGiven = async () => {
         const result = await fetch(
-            `http://localhost:8082/api/invitation/givers/${props.person.id}`,
+            `${props.url}/api/invitation/givers/${props.person.id}`,
             {
                 headers: {
                     Authorization:
@@ -91,6 +91,7 @@ export default function FeedbackPage(props) {
                 editable={true}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
             <List
                 content={allGiven}
@@ -112,6 +113,7 @@ export default function FeedbackPage(props) {
                 editable={false}
                 email={props.email}
                 password={props.password}
+                url={props.url}
             />
         </div>
     );

@@ -11,18 +11,15 @@ export default function TemplateEditor(props) {
             hardSkill: hardSkill,
             description: description,
         });
-        await fetch(
-            `http://localhost:8082/api/template/update/${props.skill.id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization:
-                        'Basic ' + btoa(props.email + ':' + props.password),
-                },
-                body: newTemplate,
-            }
-        );
+        await fetch(`${props.url}/api/template/update/${props.skill.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization:
+                    'Basic ' + btoa(props.email + ':' + props.password),
+            },
+            body: newTemplate,
+        });
         props.update();
     }
 

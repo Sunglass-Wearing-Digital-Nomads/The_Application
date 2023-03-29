@@ -12,7 +12,7 @@ export default function NawData(props) {
 
     function sendPeople() {
         fetch(
-            `http://localhost:8082/api/person/setpeople/${props.person.id}/coach/${coach}/manager/${manager}`,
+            `${props.url}/api/person/setpeople/${props.person.id}/coach/${coach}/manager/${manager}`,
             {
                 method: 'PUT',
                 headers: {
@@ -46,7 +46,7 @@ export default function NawData(props) {
     }, [props.person]);
 
     useEffect(() => {
-        fetch(`http://localhost:8082/api/role/coach/all`, {
+        fetch(`${props.url}/api/role/coach/all`, {
             headers: {
                 Authorization:
                     'Basic ' + btoa(props.email + ':' + props.password),
@@ -54,7 +54,7 @@ export default function NawData(props) {
         })
             .then((result) => result.json())
             .then((data) => setCoaches(data));
-        fetch(`http://localhost:8082/api/role/manager/all`, {
+        fetch(`${props.url}/api/role/manager/all`, {
             headers: {
                 Authorization:
                     'Basic ' + btoa(props.email + ':' + props.password),
@@ -202,7 +202,7 @@ export default function NawData(props) {
                                 )
                             ) {
                                 fetch(
-                                    `http://localhost:8082/api/user/delete/${props.person.id}`,
+                                    `${props.url}/api/user/delete/${props.person.id}`,
                                     {
                                         method: 'DELETE',
                                         headers: {

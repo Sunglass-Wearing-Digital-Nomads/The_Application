@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage(props) {
@@ -7,13 +7,23 @@ export default function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+        props.setEmail('');
+        props.setPassword('');
+        props.setPerson({
+            role: {
+                name: 'Not Logged In',
+            },
+        });
+    }, []);
+
     function checkCredentials() {
         const loginCredentials = JSON.stringify({
             email: email,
             password: password,
         });
 
-        fetch(`http://localhost:8082/api/user/login`, {
+        fetch(`${props.url}/api/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
